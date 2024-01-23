@@ -1,57 +1,20 @@
 import './App.scss'
 
+const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
+
 function App() {
-
-  return  <>
-
-    <div>
-
-      <div class='screen'>
-
+  return (
+    <div className="calculator">
+      <div className="calculator__result">0</div>
+      <div className="calculator__actions">
+        {actions.map((action) => (
+          <button key={action} className="calculator__action">
+            {action}
+          </button>
+        ))}
       </div>
-
-      <div class='teclado'>
-
-        <div class='firstline'>
-          <button>C</button>
-          <button>+-</button>
-          <button>%</button>
-          <button>/</button>
-        </div>
-
-        <div class='secondline'>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button>X</button>
-        </div>
-
-        <div class='thirdline'>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button>-</button>
-        </div>
-
-        <div class='fourthline'>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>+</button>
-        </div>
-
-        <div class='fifthline'>
-          <button>0</button>
-          <button>.</button>
-          <button>=</button>
-        </div>
-
-      </div>
-
     </div>
-
-  </>;
-  
+  );
 }
 
 export default App
