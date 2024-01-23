@@ -9,12 +9,17 @@ function App() {
 
   const handleClick = (newValue) => {
 
+    if (newValue == '.' && !value.includes('.')) {
+      setValue(value + newValue);
+      return;
+    }
+
     if (typeof newValue !== 'number') {
       return;
     }
 
     if(value === '0'){
-      setValue(newValue.toString);
+      setValue(newValue.toString());
     } else {
       setValue(value + newValue);
     }
