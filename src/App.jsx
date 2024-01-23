@@ -8,9 +8,13 @@ function App() {
   const [value, setValue] = useState('0');
 
   const handleClick = (newValue) => {
-    
+
+    if (typeof newValue !== 'number') {
+      return;
+    }
+
     if(value === '0'){
-      setValue(newValue);
+      setValue(newValue.toString);
     } else {
       setValue(value + newValue);
     }
