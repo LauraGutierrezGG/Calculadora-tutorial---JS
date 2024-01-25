@@ -9,15 +9,15 @@ function App() {
 
   const handleClick = (actionClicked) => {
 
-    // Botón "C"
-    if (actionClicked === 'C') {
-      setValue('0');
+    // Botón "+-"
+    if (actionClicked === '+-') {
+      setValue(((value) * -1));
       return;
     }
 
-     // Botón "+-"
-     if (actionClicked === '+-') {
-      setValue((parseFloat(value) * -1).toString());
+    // Botón "C"
+    if (actionClicked === 'C') {
+      setValue('0');
       return;
     }
 
@@ -31,6 +31,7 @@ function App() {
       return;
     }
 
+    //Condición de pulsar el 0 varias veces y que no los acumule
     if (value === '0') {
       setValue(actionClicked.toString());
     } else {
