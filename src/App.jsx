@@ -11,7 +11,7 @@ function App() {
 
     // Botón "+-"
     if (actionClicked === '+-') {
-      setValue(((value) * -1));
+      setValue((value) * -1);
       return;
     }
 
