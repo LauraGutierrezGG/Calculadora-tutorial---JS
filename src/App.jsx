@@ -8,12 +8,20 @@ function App() {
   const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
 
   const handleClick = (actionClicked) => {
-    // Lógica para el botón "C"
+
+    // Botón "C"
     if (actionClicked === 'C') {
       setValue('0');
       return;
     }
 
+     // Botón "+-"
+     if (actionClicked === '+-') {
+      setValue((parseFloat(value) * -1).toString());
+      return;
+    }
+
+    //Condifición de si se incluye el punto se convierte en decimal
     if (actionClicked === '.' && !value.includes('.')) {
       setValue(value + actionClicked);
       return;
