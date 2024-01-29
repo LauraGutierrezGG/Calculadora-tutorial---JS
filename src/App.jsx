@@ -4,11 +4,12 @@ import './App.scss'
 function App() {
 
   const [value, setValue] = useState('0');
+  const [operation, setOperation] = useState();
 
   const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
 
   const handleClick = (actionClicked) => {
-
+    
     // Botón "%"
     if (actionClicked === '%') {
       setValue((value / 100).toFixed(2));
@@ -33,7 +34,42 @@ function App() {
       return;
     }
 
+    if (actionClicked === '=') {
+      if (typeof operation === 'undefined'){
+        return;
+      }
+
+      const numbers = value.split(operation);
+      const num1 = numbers [0];
+      const num2 = numbers [1] === '' ? num1 : numbers[1];
+
+      if (operation === 'X') {
+        setValue(num1 * num2);
+      }
+      return;
+
+      if (operation === '+') {
+        setValue(Number(num1) + Number(num2));
+      }
+      return;
+    }
+
     if (typeof actionClicked !== 'number') {
+      const lastChar = value.slice(-1);
+      console.log('antes', (operation, actionClicked))
+      setOperation(actionClicked) /*Situar aquí para que se ejecute y trabajar conla variable de estado operation con el valor anterior*/
+      console.log('despues', {operation, actionClicked})
+
+
+      // Si escribo un símbolo sin escribir un número → lo reemplazo if (lastChar === '/' || lastChar === '+' || lastChar === 'X' || lastChar === '-') -> pero lo sustituyo para el siguiente paso
+      if (lastChar === operation) {
+        const newValue = value.replace(lastChar, actionClicked);
+        setValue(newValue);
+        return;
+      }
+
+      setValue(value + actionClicked);
+    
       return;
     }
 
