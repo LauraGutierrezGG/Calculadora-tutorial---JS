@@ -9,9 +9,15 @@ function App() {
 
   const handleClick = (actionClicked) => {
 
+    // Botón "%"
+    if (actionClicked === '%') {
+      setValue((value / 100).toFixed(2));
+      return;
+    }
+
     // Botón "+-"
     if (actionClicked === '+-') {
-      setValue((value) * -1);
+      setValue(((value) * -1).toString());
       return;
     }
 
