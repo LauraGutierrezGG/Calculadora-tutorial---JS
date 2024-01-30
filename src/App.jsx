@@ -39,6 +39,7 @@ function App() {
         return;
       }
 
+      //Ver en vídeo el por que se declaran así las constantes
       const numbers = value.split(operation);
       const num1 = numbers [0];
       const num2 = numbers [1] === '' ? num1 : numbers[1];
@@ -50,6 +51,16 @@ function App() {
 
       if (operation === '+') {
         setValue(Number(num1) + Number(num2));
+      }
+      return;
+
+      if (operation === '-') {
+        setValue(Number(num1) - Number(num2));
+      }
+      return;
+
+      if (operation === '/') {
+        setValue(Number(num1) / Number(num2));
       }
       return;
     }
