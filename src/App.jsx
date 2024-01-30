@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import './App.scss'
 
+const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
+
 function App() {
 
   const [value, setValue] = useState('0');
   const [operation, setOperation] = useState();
 
-  const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 0, '.', '='];
+  console.log('render', { value, operation});
 
   const handleClick = (actionClicked) => {
     
@@ -15,6 +17,10 @@ function App() {
       setValue((value / 100).toFixed(2));
       return;
     }
+    /*if (actionClicked === '%') {
+      setValue((value / 100).toString());
+      return;
+    }*/
 
     // Botón "+-"
     if (actionClicked === '+-') {
@@ -41,34 +47,36 @@ function App() {
 
       //Ver en vídeo el por que se declaran así las constantes
       const numbers = value.split(operation);
-      const num1 = numbers [0];
-      const num2 = numbers [1] === '' ? num1 : numbers[1];
+      const num1 = numbers[0];
+      const num2 = numbers.lenght === 0 || numbers[1] === '' ? num1 : numbers[1];
 
       if (operation === 'X') {
         setValue(num1 * num2);
+        return;
       }
-      return;
 
       if (operation === '+') {
-        setValue(Number(num1) + Number(num2));
+        setValue((Number(num1) + Number(num2)).toString());
+        return;
       }
-      return;
 
       if (operation === '-') {
-        setValue(Number(num1) - Number(num2));
+        setValue((Number(num1) - Number(num2)).toString());
+        return;
       }
-      return;
 
       if (operation === '/') {
-        setValue(Number(num1) / Number(num2));
+        setValue((Number(num1) / Number(num2)).toString());
+        return;
       }
-      return;
+
     }
 
     if (typeof actionClicked !== 'number') {
       const lastChar = value.slice(-1);
       console.log('antes', (operation, actionClicked))
-      setOperation(actionClicked) /*Situar aquí para que se ejecute y trabajar conla variable de estado operation con el valor anterior*/
+      setOperation(actionClicked)
+      /*Situar aquí para que se ejecute y trabajar conla variable de estado operation con el valor anterior*/
       console.log('despues', {operation, actionClicked})
 
 
@@ -107,3 +115,4 @@ function App() {
 }
 
 export default App;
+
