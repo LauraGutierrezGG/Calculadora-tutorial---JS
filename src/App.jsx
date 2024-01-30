@@ -8,7 +8,7 @@ function App() {
   const [value, setValue] = useState('0');
   const [operation, setOperation] = useState();
 
-  console.log('render', { value, operation});
+  console.log('render', { value, operation });
 
   const handleClick = (actionClicked) => {
     
@@ -41,7 +41,8 @@ function App() {
     }
 
     if (actionClicked === '=') {
-      if (typeof operation === 'undefined'){
+      setOperation('=');
+      if (typeof operation === 'undefined' || operation === '=') {
         return;
       }
 
