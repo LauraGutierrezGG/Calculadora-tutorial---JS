@@ -5,6 +5,11 @@ const actions = ['C', '+-', '%', '/', 7, 8, 9, 'X', 4, 5, 6, '-', 1, 2, 3, '+', 
 
 function App() {
 
+  /* Value = es una cadena de texto de los números y símbolos que pinches en la calculadora
+  Operation =  es la operación que hay que realizar
+  test.split () = para dividir una cadena de texto por un símbolo en concreto. Te devuelve un array con dos posiciones (es decir, si es 8+6, y pongo el test.split(+), lo divide en 8 y 6. Esas son las dos posiciones
+  Variable donde guardar el resultado -> let result */
+
   const [value, setValue] = useState('0');
   const [operation, setOperation] = useState();
 
@@ -100,6 +105,19 @@ function App() {
       setValue(value + actionClicked);
     }
   };
+
+  /* switch case es lo mismo que el if else
+
+const handleClicked = (actionClicked) => {
+  switch (actionClicked) {
+      case 'C': {
+      }
+      default: {
+
+      }
+  }
+}
+*/
 
   return (
     <div className="calculator">
